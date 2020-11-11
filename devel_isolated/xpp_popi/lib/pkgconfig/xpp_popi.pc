@@ -1,0 +1,8 @@
+prefix=/home/mrjohd/Quadrupeds_ws/devel_isolated/xpp_popi
+
+Name: xpp_popi
+Description: Description of xpp_popi
+Version: 1.0.10
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

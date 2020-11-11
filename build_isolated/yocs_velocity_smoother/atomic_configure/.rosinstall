@@ -1,0 +1,2 @@
+- setup-file:
+    local-name: /home/mrjohd/Quadrupeds_ws/devel_isolated/yocs_velocity_smoother/setup.sh

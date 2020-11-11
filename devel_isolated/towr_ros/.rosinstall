@@ -1,0 +1,2 @@
+- setup-file:
+    local-name: /home/mrjohd/Quadrupeds_ws/devel_isolated/towr_ros/setup.sh

@@ -1,0 +1,8 @@
+prefix=/home/mrjohd/Quadrupeds_ws/devel_isolated/champ
+
+Name: champ
+Description: Description of champ
+Version: 0.1.0
+Cflags: -I/home/mrjohd/Quadrupeds_ws/src/controller/champ/champ/include -I/home/mrjohd/Quadrupeds_ws/src/controller/champ/champ/include/champ
+Libs: -L${prefix}/lib 
+Requires: 

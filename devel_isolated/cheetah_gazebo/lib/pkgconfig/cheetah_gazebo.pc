@@ -1,0 +1,8 @@
+prefix=/home/mrjohd/Quadrupeds_ws/devel_isolated/cheetah_gazebo
+
+Name: cheetah_gazebo
+Description: Description of cheetah_gazebo
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

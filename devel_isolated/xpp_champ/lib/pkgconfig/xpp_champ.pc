@@ -1,0 +1,8 @@
+prefix=/home/mrjohd/Quadrupeds_ws/devel_isolated/xpp_champ
+
+Name: xpp_champ
+Description: Description of xpp_champ
+Version: 1.0.10
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

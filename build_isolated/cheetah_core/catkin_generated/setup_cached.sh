@@ -8,5 +8,7 @@
 
 # modified environment variables
 export CMAKE_PREFIX_PATH="/home/mrjohd/Quadrupeds_ws/devel_isolated/cheetah_core:$CMAKE_PREFIX_PATH"
+export LD_LIBRARY_PATH="/home/mrjohd/Quadrupeds_ws/devel_isolated/cheetah_core/lib:$LD_LIBRARY_PATH"
+export PKG_CONFIG_PATH="/home/mrjohd/Quadrupeds_ws/devel_isolated/cheetah_core/lib/pkgconfig:$PKG_CONFIG_PATH"
 export ROSLISP_PACKAGE_DIRECTORIES="/home/mrjohd/Quadrupeds_ws/devel_isolated/cheetah_core/share/common-lisp:$ROSLISP_PACKAGE_DIRECTORIES"
 export ROS_PACKAGE_PATH="/home/mrjohd/Quadrupeds_ws/src/robots/descriptions/cheetah_simu/cheetah_sim/ros_package/cheetah_core:$ROS_PACKAGE_PATH"

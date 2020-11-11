@@ -22,7 +22,7 @@ double foot_reaction[4][3];
 int user_command;
 
 int NUM_SAMPLES=0;
-std::string DATA_FILE = "/home/mrjohd/Quadrupeds_ws/src/data/csv/Quadruped_data.txt";
+std::string DATA_FILE = "/home/mrjohd/Quadrupeds_ws/src/data/csv/Quadruped_data_50.txt";
 std::fstream dataout(DATA_FILE, std::ios::out);
 
 void WriteData(){
@@ -54,7 +54,6 @@ void WriteData(){
     }
 
     dataout << NUM_SAMPLES
-            << ", "
             <<","<<base[0]<<","<<base[1]<<","<<base[2]
             <<","<<base[3]<<","<<base[4]<<","<<base[5]
             <<","<<base[6]<<","<<base[7]<<","<<base[8]
@@ -154,12 +153,19 @@ void FootReactionCallback(const champ_msgs::ContactsStamped &_msg){
   - RH
   */
   for(int foot=0;foot<4;foot++){
-    if(_msg.reactions[foot].x != 0)
+    // Update when the foot is on the ground.
+    if(_msg.contacts[foot] == true){
+      // when the foot is on the ground, F~=0
       foot_reaction[foot][0] = _msg.reactions[foot].x;
-    if(_msg.reactions[foot].y != 0)
       foot_reaction[foot][1] = _msg.reactions[foot].y;
-    if(_msg.reactions[foot].z != 0)
       foot_reaction[foot][2] = _msg.reactions[foot].z;
+    }
+    else{
+      // When the foot is not contact, F=0
+      foot_reaction[foot][0] = 0;
+      foot_reaction[foot][1] = 0;
+      foot_reaction[foot][2] = 0;
+    }
   }
 
 }
@@ -179,7 +185,13 @@ int main(int _argc, char **_argv){
   ros::Subscriber sub_FootReaction = nh.subscribe("/foot_contacts",1,&FootReactionCallback);
   ros::Subscriber sub_UserCommand = nh.subscribe("/User_Command",1,&UserCommandCallback);
 
-  while (ros::ok() && NUM_SAMPLES < 300000){//데이타 300,000배!
+  // Initial feet reaction - CHAMP robot
+  foot_reaction[0][0] = 0.241382750106;foot_reaction[0][1] = -0.147906133441;foot_reaction[0][2] = 0.0228952463565;
+  foot_reaction[1][0] = 0.192607574288;foot_reaction[1][1] = 0.123793525589;foot_reaction[1][2] = 0.0210262944035;
+  foot_reaction[2][0] = 0.0137002647741;foot_reaction[2][1] = -0.0729600304407;foot_reaction[2][2] = 0.113286486566;
+  foot_reaction[3][0] = 0.0241253211002;foot_reaction[3][1] = 0.146913818915;foot_reaction[3][2] = 0.240234926093;
+
+  while (ros::ok() && NUM_SAMPLES < 500000){//데이타 500,000배!
 
     ros::spinOnce();
   }
